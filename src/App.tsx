@@ -1,5 +1,5 @@
 import './App.css'
-import {faker} from "@faker-js/faker"
+import { faker } from "@faker-js/faker"
 import RestartButton from './components/RestartButton'
 import Results from './components/Results'
 import UserTypings from './components/UserTypings'
@@ -10,20 +10,29 @@ function App() {
 
   return (
     <>
-      <CountdownTimer timeLeft={20}/>
-      <GenerateWrods words={words}></GenerateWrods>
-      <UserTypings userInput={'Hello world'}/>
-      <RestartButton className={"mx-auto mt-10 text-slate-500"} onRestart={()=>null}/>
+      <CountdownTimer timeLeft={20} />
+      <WordsContainer>
+        <GenerateWords words={words}></GenerateWords>
+        <UserTypings userInput={'Hello world'} className='absolute inset-0' />
+      </WordsContainer>
+      <RestartButton className={"mx-auto mt-10 text-slate-500"} onRestart={() => null} />
       <Results errors={10} accuracyPercentage={65} total={200} className={'mt-10'} />
     </>
   )
 }
 
-const GenerateWrods=({words}:{words:string})=>{
-  return <div className='text-slate-500 text-4xl'>{words}</div>
+const WordsContainer = ({ children }: { children: React.ReactNode }) => {
+  return <div className='relative  text-3xl max-w-xl leading-relaxed break-all'>
+    {children}
+  </div>
+
 }
 
-const CountdownTimer=({timeLeft}:{timeLeft:number})=>{
+const GenerateWords = ({ words }: { words: string }) => {
+  return <div className='text-slate-500'>{words}</div>
+}
+
+const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
   return <h2 className='text-primary-400 font-medium'>Time: {timeLeft}</h2>
 }
 
