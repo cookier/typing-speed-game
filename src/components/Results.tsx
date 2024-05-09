@@ -13,7 +13,8 @@ const Results = ({ errors, accuracyPercentage, total, className }: {
 
     return (
 
-        <motion.ul className={`${className} flex flex-col items-center text-primary-400 space-y-3`}>
+        <motion.ul className={`${className} flex flex-col items-center
+         dark:text-primary-400 text-green-500 space-y-3`}>
             <motion.li initial={initial} animate={animate} transition={{ ...duration, delay: 0 }}>Results</motion.li>
             <motion.li initial={initial} animate={animate} transition={{ ...duration, delay: 0.5 }}>Accuracy: {formatPercentage(accuracyPercentage)}</motion.li>
             <motion.li className="text-red-500" initial={initial} animate={animate} transition={{ ...duration, delay: 1 }}>Errors: {errors}</motion.li>
